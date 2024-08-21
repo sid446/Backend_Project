@@ -15,7 +15,14 @@ app.use(express.static("public")) // matlb jo bhi public asset ho vo public me j
 app.use(cookieParser())//taki hum browser ki cookies ke sath interact kar sake
 
 
+//routes import
+
+import userRouter from "./routes/user.routes.js"
+
+//routes declaration
+app.use("/api/v1/users",userRouter) // yaha pe humne route likha /users fhir usase userRoute active ho jayega
 
 
+  
 
 export {app}

@@ -10,7 +10,7 @@ const userSchema=new Schema({
         required:true,
         unique:true,
         lowercase:true,
-        trim:true,
+        trim:true,//remove white spacing
         index:true
     },
     email:{
@@ -43,7 +43,7 @@ const userSchema=new Schema({
     ],
     password:{
         type:String,
-        required:[true,"Pasword is Required"]
+        required:[true,"Password is Required"]
     },
     refreshToken:{
         type:String

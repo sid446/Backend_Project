@@ -53,7 +53,7 @@ const userSchema=new Schema({
 
 userSchema.pre("save",async function(next){
     if(!this.isModified("password")) return next();
-    this.password=bcrypt.hash(this.password,10)
+    this.password=await bcrypt.hash(this.password,10)
     next()
 })//prehook we cant use arrow function(we cant use this.) in here because yaha pe  context nahi pata hota par isme toh hume userSchema ke hisab se karna
 

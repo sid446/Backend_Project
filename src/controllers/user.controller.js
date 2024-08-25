@@ -15,7 +15,7 @@ const registerUser=asyncHandler(async(req,res)=>
         //check for user creation
         //return res is user is created
 
-       const{fullname,email,username,password}= req.body            //agar form ya json se data aa raha hai vo isase milta
+       const{fullname,email,username,password}= req.body//agar form ya json se data aa raha hai vo isase milta
        console.log("email:",email);
     
     //now validation
@@ -25,7 +25,7 @@ const registerUser=asyncHandler(async(req,res)=>
    }
    //now add validation for email formating-hw
    //user already exist?
-  const existedUser= User.findOne({
+  const existedUser= await User.findOne({
     $or:[{ username }, { email }]
 
    })//find user whose username matched with the input one
@@ -61,7 +61,7 @@ const registerUser=asyncHandler(async(req,res)=>
     coverImage:coverImage?.url || "" ,//avatar toh hoga hi hoga but coverImage ho sakti bhi hai ya nahi bhi toh is liye humne optional technic use ki
     email,
     password,
-    username:username.toLowercase()
+    username:username.toLowerCase()
    })
   const createdUser= await User.findById(user._id).select(
     "-password -refreshToken"
